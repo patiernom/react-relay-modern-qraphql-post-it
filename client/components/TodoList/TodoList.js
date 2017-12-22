@@ -21,7 +21,7 @@ class TodoList extends React.Component {
     return (
       <section className={styles.root}>
         <Grid>
-          <Cell col={11}>
+          <Cell col={12}>
             <List>
               {this.renderTodos()}
             </List>

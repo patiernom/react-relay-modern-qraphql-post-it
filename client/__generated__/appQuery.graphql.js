@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash e7bae8f515defb2b9704ef6430c61702
+ * @relayHash 6e68486c3be55f9a9276824ec269701b
  */
 
 /* eslint-disable */
@@ -28,6 +28,7 @@ fragment TodoApp_viewer on User {
   firstName
   lastName
   username
+  email
   totalCount
   ...TodoList_viewer
   ...Footer_viewer
@@ -143,6 +144,13 @@ const batch /*: ConcreteBatch*/ = {
             "alias": null,
             "args": null,
             "name": "username",
+            "storageKey": null
+          },
+          {
+            "kind": "ScalarField",
+            "alias": null,
+            "args": null,
+            "name": "email",
             "storageKey": null
           },
           {
@@ -267,20 +275,13 @@ const batch /*: ConcreteBatch*/ = {
             "name": "todos",
             "key": "TodoList_todos",
             "filters": null
-          },
-          {
-            "kind": "ScalarField",
-            "alias": null,
-            "args": null,
-            "name": "email",
-            "storageKey": null
           }
         ],
         "storageKey": null
       }
     ]
   },
-  "text": "query appQuery {\n  viewer {\n    ...TodoApp_viewer\n    id\n  }\n}\n\nfragment TodoApp_viewer on User {\n  id\n  firstName\n  lastName\n  username\n  totalCount\n  ...TodoList_viewer\n  ...Footer_viewer\n}\n\nfragment TodoList_viewer on User {\n  todos(first: 2147483647) {\n    edges {\n      node {\n        __typename\n        id\n        timestamp\n        ...Todo_todo\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n    }\n  }\n  id\n  ...Todo_viewer\n}\n\nfragment Footer_viewer on User {\n  id\n  username\n  email\n}\n\nfragment Todo_todo on Todo {\n  timestamp\n  id\n  text\n}\n\nfragment Todo_viewer on User {\n  id\n  firstName\n  lastName\n  totalCount\n}\n"
+  "text": "query appQuery {\n  viewer {\n    ...TodoApp_viewer\n    id\n  }\n}\n\nfragment TodoApp_viewer on User {\n  id\n  firstName\n  lastName\n  username\n  email\n  totalCount\n  ...TodoList_viewer\n  ...Footer_viewer\n}\n\nfragment TodoList_viewer on User {\n  todos(first: 2147483647) {\n    edges {\n      node {\n        __typename\n        id\n        timestamp\n        ...Todo_todo\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n    }\n  }\n  id\n  ...Todo_viewer\n}\n\nfragment Footer_viewer on User {\n  id\n  username\n  email\n}\n\nfragment Todo_todo on Todo {\n  timestamp\n  id\n  text\n}\n\nfragment Todo_viewer on User {\n  id\n  firstName\n  lastName\n  totalCount\n}\n"
 };
 
 module.exports = batch;

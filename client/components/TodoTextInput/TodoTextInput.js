@@ -53,16 +53,16 @@ export default class TodoTextInput extends React.Component {
     return (
       <div className={styles.root}>
         <Grid>
-          <Cell col={10}>
+          <Cell col={11}>
             <Textfield
               onChange={this.onChange}
-              label='Enter new todo...'
+              label='Enter your message...'
               onKeyDown={this.onKeyDown}
               value={this.state.form.text}
             />
 
           </Cell>
-          <Cell col={2}>
+          <Cell col={1}>
             <Button className={'addTodo'} raised accent onClick={this.commitChanges}><Icon name={'send'} /></Button>
           </Cell>
         </Grid>

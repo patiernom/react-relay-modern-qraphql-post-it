@@ -13,6 +13,7 @@ export type TodoApp_viewer = {|
   +firstName: ?string;
   +lastName: ?string;
   +username: ?string;
+  +email: ?string;
   +totalCount: ?number;
 |};
 */
@@ -50,6 +51,13 @@ const fragment /*: ConcreteFragment*/ = {
       "alias": null,
       "args": null,
       "name": "username",
+      "storageKey": null
+    },
+    {
+      "kind": "ScalarField",
+      "alias": null,
+      "args": null,
+      "name": "email",
       "storageKey": null
     },
     {
