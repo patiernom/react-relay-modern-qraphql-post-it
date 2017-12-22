@@ -1,4 +1,3 @@
-// @flow
 /* eslint-disable no-console, no-shadow */
 import path from 'path';
 import webpack from 'webpack';

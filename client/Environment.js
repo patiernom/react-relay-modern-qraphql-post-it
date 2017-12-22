@@ -1,4 +1,3 @@
-
 import {
   Environment,
   Network,
@@ -9,16 +8,16 @@ import {
 function fetchQuery(
   operation,
   variables,
-  cacheConfig,
-  uploadables
 ) {
   return fetch('/graphql', {
     method: 'POST',
     headers: {
-      'Accept': 'application/json',
-      'Content-Type': 'application/graphql',
+      'Content-Type': 'application/json',
     },
-    body: operation.text
+    body: JSON.stringify({
+      query: operation.text,
+      variables,
+    }),
   }).then((response) => {
     return response.json();
   });

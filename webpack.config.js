@@ -1,5 +1,3 @@
-// @flow
-
 const path = require('path');
 const webpack = require('webpack');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
@@ -27,7 +25,7 @@ if (process.env.NODE_ENV === 'production') {
       }
     }),
     new HtmlWebpackPlugin({
-      title: 'Relay Starter Kit - Integrated with Relay, GraphQL, Express, ES6/ES7, JSX, Webpack, Babel, Material Design Lite, and PostCSS',
+      title: 'Post-it Dashbord Powered by React, React Relay Modern, GraphQL, Material UI',
       template: './client/index.html',
       mobile: true,
       inject: false
@@ -51,7 +49,7 @@ if (process.env.NODE_ENV === 'production') {
       __DEV__: true
     }),
     new HtmlWebpackPlugin({
-      title: 'Relay Starter Kit - Integrated with Relay, GraphQL, Express, ES6/ES7, JSX, Webpack, Babel, Material Design Lite, and PostCSS',
+      title: 'Post-it Dashbord Powered by React, React Relay Modern, GraphQL, Material UI',
       template: './client/index.html',
       mobile: true,
       inject: false

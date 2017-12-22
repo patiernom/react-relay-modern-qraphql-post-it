@@ -1,15 +1,3 @@
-/**
- * This file provided by Facebook is for non-commercial testing and evaluation
- * purposes only.  Facebook reserves all rights not expressly granted.
- *
- * THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
- * IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
- * FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL
- * FACEBOOK BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN
- * ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN
- * CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
- */
-
 import crypto from 'crypto';
 import low from 'lowdb';
 import Memory from 'lowdb/adapters/Memory';
@@ -25,12 +13,11 @@ class User {
 }
 
 class Todo {
-  constructor(id, userId, timestamp, text, complete) {
+  constructor(id, userId, timestamp, text) {
     this.id = id;
     this.text = text;
     this.userId = userId;
     this.timestamp = timestamp;
-    this.complete = complete;
   }
 }
 
@@ -38,18 +25,13 @@ class Todo {
 const VIEWER_ID = '1';
 
 // Mock user data
-const defaultUser = new User('1', 'Marco', 'Patierno', 'patiernom', 'marco_patienro@msn.com');
+const defaultUser = new User('1', 'Marco', 'Patierno', 'patiernom', 'marco_patierno@msn.com');
 
 // Mock todo data
-const todosById = {};
-const todoIdsByUser = {
-  [VIEWER_ID]: [],
-};
-let nextTodoId = 0;
 const defaultTodos = [
-  new Todo(crypto.randomBytes(10).toString('hex'), VIEWER_ID, Date.now(), 'example 1', false),
-  new Todo(crypto.randomBytes(10).toString('hex'), VIEWER_ID, Date.now(), 'example 2', false),
-  new Todo(crypto.randomBytes(10).toString('hex'), VIEWER_ID, Date.now(), 'example 3', false)
+  new Todo(crypto.randomBytes(10).toString('hex'), VIEWER_ID, Date.now(), 'example 1'),
+  new Todo(crypto.randomBytes(10).toString('hex'), VIEWER_ID, Date.now(), 'example 2'),
+  new Todo(crypto.randomBytes(10).toString('hex'), VIEWER_ID, Date.now(), 'example 3')
 ];
 
 const db = low(new Memory());
@@ -117,23 +99,6 @@ const renameTodo = async (id, text) => {
     .assign({ text: text })
     .write();
 };
-
-export function removeCompletedTodos() {
-  const todosToRemove = getTodos().filter(todo => todo.complete);
-  todosToRemove.forEach(todo => removeTodo(todo.id));
-  return todosToRemove.map(todo => todo.id);
-}
-
-export function markAllTodos(complete) {
-  const changedTodos = [];
-  getTodos().forEach(todo => {
-    if (todo.complete !== complete) {
-      todo.complete = complete;
-      changedTodos.push(todo);
-    }
-  });
-  return changedTodos.map(todo => todo.id);
-}
 
 export {
   User,
