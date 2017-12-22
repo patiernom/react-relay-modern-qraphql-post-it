@@ -1,0 +1,9 @@
+@import '../variables.scss';
+
+.root :global {
+  .editing {
+    .content-text {
+      display: none;
+    }
+  }
+}
