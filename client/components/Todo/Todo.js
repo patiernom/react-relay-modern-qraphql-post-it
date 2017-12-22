@@ -4,7 +4,8 @@ import {
   graphql,
 } from 'react-relay';
 import classnames from 'classnames';
-import { ListItem, List, ListItemContent, ListItemAction, Icon, Grid, Cell } from 'react-mdl';
+import moment from 'moment';
+import { ListItem, ListItemContent, ListItemAction, Icon, Tooltip } from 'react-mdl';
 import RemoveTodoMutation from '../../mutations/RemoveTodoMutation';
 import RenameTodoMutation from '../../mutations/RenameTodoMutation';
 import TodoTextEdit from '../TodoTextEdit/TodoTextEdit';
@@ -66,15 +67,22 @@ class Todo extends React.Component {
             editing: this.state.isEditing
           })}
         >
-          <ListItemContent icon='person'>
-            <span className={'content-text'}>{this.props.todo.text} - {this.props.todo.timestamp}</span>
+          <ListItemContent avatar={<div>{this.props.viewer.firstName.charAt(0)}{this.props.viewer.lastName.charAt(0)}</div>}>
+            <div className={'content-text'}>{this.props.todo.text}</div>
             {this.state.isEditing && this.renderTextInput()}
+            <span className={'time'}>
+              {moment(this.props.todo.timestamp).format('MMMM Do YYYY, h:mm:ss a')}
+            </span>
           </ListItemContent>
           <ListItemAction>
-            <button onClick={this._handleLabelDoubleClick}><Icon name='edit' /></button>
+            <Tooltip label={'Edit'} position={'top'}>
+              <button onClick={this._handleLabelDoubleClick}><Icon name='edit' /></button>
+            </Tooltip>
           </ListItemAction>
           <ListItemAction>
-            <button onClick={this._handleDestroyClick}><Icon name='delete' /></button>
+            <Tooltip label={'Delete'} position={'top'}>
+              <button onClick={this._handleDestroyClick}><Icon name='delete' /></button>
+            </Tooltip>
           </ListItemAction>
         </ListItem>
       </div>
@@ -93,6 +101,8 @@ export default createFragmentContainer(Todo, {
   viewer: graphql`
     fragment Todo_viewer on User {
       id,
+      firstName,
+      lastName
       totalCount,
     }
   `,

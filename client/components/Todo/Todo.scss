@@ -1,9 +1,54 @@
 @import '../variables.scss';
 
 .root :global {
+  .time {
+    font-size: 10px;
+    color: $secondary-text-color;
+    display: block;
+    margin-top: 10px;
+  }
+
+  .content-text {
+    display: inline-block;
+    width: 100%;
+  }
+
   .editing {
     .content-text {
       display: none;
     }
+
+    input.edit {
+      width: 100%;
+    }
   }
+
+  .mdl-list__item {
+    .mdl-list__item-primary-content .mdl-list__item-avatar {
+      font-size: 20px;
+      line-height: 42px;
+      text-align: center;
+      background-color: $default-primary-color;
+    }
+
+    button {
+      margin:0;
+      border:0;
+      padding:0;
+      display:inline-block;
+      vertical-align:middle;
+      white-space:normal;
+      background:none;
+      line-height:1;
+      -webkit-box-sizing:border-box;
+      -moz-box-sizing:border-box;
+      box-sizing:border-box;
+
+      i {
+        color: $accent-color;
+        cursor: pointer;
+      }
+    }
+  }
+
 }

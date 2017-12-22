@@ -1,14 +1,34 @@
 @import '../variables.scss';
 
 .root :global {
-  .mdl-layout__header {
-    background-color: $dark-primary-color;
+  .user-avatar-container {
+    background-color: $default-primary-color;
+    text-align: center;
+
+    .user-avatar {
+      width: 150px;
+      height: 150px;
+      background-size: cover;
+      background-position: top center;
+      border-radius: 50%;
+      margin: 25px auto;
+      border: 1px solid $text-primary-color;
+    }
   }
 
-  .mdl-layout-title a {
+  .mdl-card__title {
+    background-color: $default-primary-color;
     color: $text-primary-color;
-    text-decoration: none;
-    font-weight: normal;
+    padding: 0 0 10px 0;
+    text-align: center;
+  }
+
+  .mdl-layout__header-row > .mdl-layout-title {
+    color: $text-primary-color;
+  }
+
+  .mdl-layout__header {
+    background-color: $dark-primary-color;
   }
 
   .mdl-layout__header-row .mdl-navigation__link {
@@ -16,8 +36,11 @@
   }
 
   .mdl-layout__drawer > .mdl-layout-title {
-    padding-top: 36px;
+    padding: 0;
     background-color: $default-primary-color;
+    color: $text-primary-color;
+    text-decoration: none;
+    font-weight: normal;
   }
 
   .mdl-layout__drawer-button {
@@ -26,7 +49,6 @@
 
   .msgNumber {
     text-align: right;
-    width: 100%;
     color: $text-primary-color;
     font-weight: 400;
 

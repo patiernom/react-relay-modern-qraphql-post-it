@@ -10,6 +10,9 @@
 import type {ConcreteFragment} from 'relay-runtime';
 export type TodoApp_viewer = {|
   +id: string;
+  +firstName: ?string;
+  +lastName: ?string;
+  +username: ?string;
   +totalCount: ?number;
 |};
 */
@@ -26,6 +29,27 @@ const fragment /*: ConcreteFragment*/ = {
       "alias": null,
       "args": null,
       "name": "id",
+      "storageKey": null
+    },
+    {
+      "kind": "ScalarField",
+      "alias": null,
+      "args": null,
+      "name": "firstName",
+      "storageKey": null
+    },
+    {
+      "kind": "ScalarField",
+      "alias": null,
+      "args": null,
+      "name": "lastName",
+      "storageKey": null
+    },
+    {
+      "kind": "ScalarField",
+      "alias": null,
+      "args": null,
+      "name": "username",
       "storageKey": null
     },
     {

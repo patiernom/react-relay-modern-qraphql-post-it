@@ -2,4 +2,11 @@
 
 .root :global {
 
+  .mdl-list__item {
+    border-bottom: 1px solid $divider-color;
+
+    .mdl-list__item-primary-content > span {
+      width: 100%;
+    }
+  }
 }

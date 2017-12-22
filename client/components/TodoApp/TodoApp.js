@@ -22,14 +22,32 @@ class TodoApp extends React.Component {
       this.props.viewer,
     );
   };
+
   render() {
+    const getUserTitle = () => {
+      if (this.props.viewer.firstName &&
+        this.props.viewer.lastName &&
+        this.props.viewer.firstName.length > 0 &&
+        this.props.viewer.lastName.length > 0
+      ) {
+        return `${this.props.viewer.firstName} ${this.props.viewer.lastName}`;
+      } else {
+        return this.props.viewer.username;
+      }
+    };
+
     const hasTodos = this.props.viewer.totalCount > 0;
     const msgNumber = this.props.viewer.totalCount;
     const title = 'Post-it Relay';
+    const user = {
+      username: this.props.viewer.username,
+      email:  this.props.viewer.email,
+      title: getUserTitle()
+    };
 
     return (
       <div className={styles.root}>
-        <Navbar title={title} msgNumber={msgNumber}>
+        <Navbar title={title} msgNumber={msgNumber} user={user}>
           <Content>
             <div className={styles.content}>
               {hasTodos &&
@@ -51,6 +69,10 @@ export default createFragmentContainer(TodoApp, {
   viewer: graphql`
     fragment TodoApp_viewer on User {
       id,
+      firstName,
+      lastName
+      username
+      email
       totalCount,
       ...TodoList_viewer,
       ...Footer_viewer,
