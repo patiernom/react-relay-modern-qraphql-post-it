@@ -13,8 +13,8 @@ export default createFragmentContainer(TodoApp, {
           username
           email
           totalCount,
-          ...TodoList_viewer,
-          ...Footer_viewer,
+          ...TodoListContainer_viewer,
+          ...FooterContainer_viewer,
       }
   `,
 });

@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { createFragmentContainer, graphql } from 'react-relay';
 import { Footer as MDLFooter, FooterSection } from 'react-mdl';
 import styles from './Footer.scss';
 
@@ -16,19 +15,10 @@ class Footer extends React.Component {
   }
 }
 
-
 Footer.propTypes = {
   viewer: PropTypes.object.isRequired
 };
 
 Footer.defaultProps = {};
 
-export default createFragmentContainer(Footer, {
-  viewer: graphql`
-      fragment Footer_viewer on User {
-          id
-          username,
-          email
-      }
-  `,
-});
+export default Footer;

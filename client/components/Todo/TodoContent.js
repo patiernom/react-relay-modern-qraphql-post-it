@@ -13,9 +13,11 @@ const TodoContent = ({ text, timestamp }) => (
 
 TodoContent.propTypes = {
   text: PropTypes.string.isRequired,
-  timestamp: PropTypes.node.isRequired
+  timestamp: PropTypes.number
 };
 
-TodoContent.defaultProps = {};
+TodoContent.defaultProps = {
+  timestamp: 0
+};
 
 export default TodoContent;

@@ -6,7 +6,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { installRelayDevTools } from 'relay-devtools';
 import modernEnvironment from './Environment';
-import TodoApp from './components/TodoApp/TodoApp';
+import TodoApp from './components/TodoApp/TodoAppContainer';
 
 // Useful for debugging, but remember to remove for a production deploy.
 // installRelayDevTools();

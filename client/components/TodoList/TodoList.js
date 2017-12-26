@@ -1,8 +1,5 @@
 import React from 'react';
-import {
-  createFragmentContainer,
-  graphql,
-} from 'react-relay';
+import PropTypes from 'prop-types';
 import { List, Grid, Cell } from 'react-mdl';
 import Todo from '../Todo/TodoContainer';
 import styles from './TodoList.scss';
@@ -32,22 +29,10 @@ class TodoList extends React.Component {
   }
 }
 
-export default createFragmentContainer(TodoList, {
-  viewer: graphql`
-    fragment TodoList_viewer on User {
-      todos(
-        first: 2147483647  # max GraphQLInt
-      ) @connection(key: "TodoList_todos") {
-        edges {
-          node {
-            id,
-            timestamp
-            ...TodoContainer_todo,
-          },
-        },
-      },
-      id,
-      ...TodoContainer_viewer,
-    }
-  `,
-});
+TodoList.propTypes = {
+  viewer: PropTypes.object.isRequired
+};
+
+TodoList.defaultProps = {};
+
+export default TodoList;

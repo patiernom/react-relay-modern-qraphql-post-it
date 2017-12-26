@@ -5,11 +5,11 @@ import 'normalize.css/normalize.css';
 import 'react-mdl/extra/css/material.cyan-red.min.css';
 import 'react-mdl/extra/material';
 import AddTodoMutation from '../../mutations/AddTodoMutation';
-import TodoList from '../TodoList/TodoList';
+import TodoList from '../TodoList/TodoListContainer';
 import TodoTextInput from '../TodoTextInput/TodoTextInput';
 import utils from '../../lib/utils';
 import Navbar from '../Navbar/Navbar';
-import Footer from '../Footer/Footer';
+import Footer from '../Footer/FooterContainer';
 import styles from './App.scss';
 
 class TodoApp extends React.Component {
