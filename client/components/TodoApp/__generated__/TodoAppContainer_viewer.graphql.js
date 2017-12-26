@@ -8,7 +8,7 @@
 
 /*::
 import type {ConcreteFragment} from 'relay-runtime';
-export type TodoApp_viewer = {|
+export type TodoAppContainer_viewer = {|
   +id: string;
   +firstName: ?string;
   +lastName: ?string;
@@ -23,7 +23,7 @@ const fragment /*: ConcreteFragment*/ = {
   "argumentDefinitions": [],
   "kind": "Fragment",
   "metadata": null,
-  "name": "TodoApp_viewer",
+  "name": "TodoAppContainer_viewer",
   "selections": [
     {
       "kind": "ScalarField",

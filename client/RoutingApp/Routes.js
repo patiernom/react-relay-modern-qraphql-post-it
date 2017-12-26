@@ -7,7 +7,7 @@ import App from '../components/TodoApp/TodoApp';
 const query = graphql`
 query Routes_App_Query {
   viewer {
-    ...TodoApp_viewer
+    ...TodoAppContainer_viewer
   }
 }`;
 

@@ -4,7 +4,7 @@ import {
   graphql,
 } from 'react-relay';
 import { List, Grid, Cell } from 'react-mdl';
-import Todo from '../Todo/Todo';
+import Todo from '../Todo/TodoContainer';
 import styles from './TodoList.scss';
 
 class TodoList extends React.Component {
@@ -42,12 +42,12 @@ export default createFragmentContainer(TodoList, {
           node {
             id,
             timestamp
-            ...Todo_todo,
+            ...TodoContainer_todo,
           },
         },
       },
       id,
-      ...Todo_viewer,
+      ...TodoContainer_viewer,
     }
   `,
 });

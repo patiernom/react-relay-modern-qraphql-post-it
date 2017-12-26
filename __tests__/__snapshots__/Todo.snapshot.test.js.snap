@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Todo component renders the todo correctly renders correctly 1`] = `
+<div>
+  <div
+    className="content-text"
+  >
+    Buy Milk
+  </div>
+  <span
+    className="time"
+  >
+    December 26th 2017, 6:38:20 pm
+  </span>
+</div>
+`;

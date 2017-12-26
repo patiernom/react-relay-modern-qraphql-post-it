@@ -20,7 +20,7 @@ ReactDOM.render(
     query={graphql`
       query appQuery {
         viewer {
-          ...TodoApp_viewer
+          ...TodoAppContainer_viewer
         }
       }
     `}

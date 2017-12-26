@@ -1,60 +1,67 @@
 import React from 'react';
-import {
-  createFragmentContainer,
-  graphql,
-} from 'react-relay';
+import PropTypes from 'prop-types';
 import classnames from 'classnames';
-import moment from 'moment';
 import { ListItem, ListItemContent, ListItemAction, Icon, Tooltip } from 'react-mdl';
+import 'react-mdl/extra/material';
 import RemoveTodoMutation from '../../mutations/RemoveTodoMutation';
 import RenameTodoMutation from '../../mutations/RenameTodoMutation';
 import TodoTextEdit from '../TodoTextEdit/TodoTextEdit';
+import TodoContent from './TodoContent';
+import utils from '../../lib/utils';
 import styles from './Todo.scss';
 
 class Todo extends React.Component {
   state = {
     isEditing: false,
   };
-  _handleDestroyClick = () => {
-    this._removeTodo();
+
+  onDeleleClick = () => {
+    this.removeTodo();
   };
-  _handleLabelDoubleClick = () => {
-    this._setEditMode(true);
+
+  onClick = () => {
+    this.setEditMode(true);
   };
-  _handleTextInputCancel = () => {
-    this._setEditMode(false);
+
+  onTextInputCancel = () => {
+    this.setEditMode(false);
   };
-  _handleTextInputDelete = () => {
-    this._setEditMode(false);
-    this._removeTodo();
+
+  onTextInputDelete = () => {
+    this.setEditMode(false);
+    this.removeTodo();
   };
-  _handleTextInputSave = (text) => {
-    this._setEditMode(false);
+
+  onTextInputSave = (text) => {
+    this.setEditMode(false);
     RenameTodoMutation.commit(
       this.props.relay.environment,
       text,
       this.props.todo,
     );
   };
-  _removeTodo() {
+
+  setEditMode = (shouldEdit) => {
+    this.setState({ isEditing: shouldEdit });
+  };
+
+  removeTodo() {
     RemoveTodoMutation.commit(
       this.props.relay.environment,
       this.props.todo,
       this.props.viewer,
     );
   }
-  _setEditMode = (shouldEdit) => {
-    this.setState({isEditing: shouldEdit});
-  };
+
   renderTextInput() {
     return (
       <TodoTextEdit
-        className="edit"
+        className='edit'
         commitOnBlur={true}
         initialValue={this.props.todo.text}
-        onCancel={this._handleTextInputCancel}
-        onDelete={this._handleTextInputDelete}
-        onSave={this._handleTextInputSave}
+        onCancel={this.onTextInputCancel}
+        onDelete={this.onTextInputDelete}
+        onSave={this.onTextInputSave}
       />
     );
   }
@@ -67,21 +74,18 @@ class Todo extends React.Component {
             editing: this.state.isEditing
           })}
         >
-          <ListItemContent avatar={<div>{this.props.viewer.firstName.charAt(0)}{this.props.viewer.lastName.charAt(0)}</div>}>
-            <div className={'content-text'}>{this.props.todo.text}</div>
+          <ListItemContent avatar={<div>{utils.getAvatar(this.props.viewer)}</div>}>
             {this.state.isEditing && this.renderTextInput()}
-            <span className={'time'}>
-              {moment(this.props.todo.timestamp).format('MMMM Do YYYY, h:mm:ss a')}
-            </span>
+            <TodoContent text={this.props.todo.text} timestamp={this.props.todo.timestamp} />
           </ListItemContent>
           <ListItemAction>
             <Tooltip label={'Edit'} position={'top'}>
-              <button onClick={this._handleLabelDoubleClick}><Icon name='edit' /></button>
+              <button onClick={this.onClick}><Icon name='edit' /></button>
             </Tooltip>
           </ListItemAction>
           <ListItemAction>
             <Tooltip label={'Delete'} position={'top'}>
-              <button onClick={this._handleDestroyClick}><Icon name='delete' /></button>
+              <button onClick={this.onDeleleClick}><Icon name='delete' /></button>
             </Tooltip>
           </ListItemAction>
         </ListItem>
@@ -90,20 +94,12 @@ class Todo extends React.Component {
   }
 }
 
-export default createFragmentContainer(Todo, {
-  todo: graphql`
-    fragment Todo_todo on Todo {
-      timestamp
-      id,
-      text,
-    }
-  `,
-  viewer: graphql`
-    fragment Todo_viewer on User {
-      id,
-      firstName,
-      lastName
-      totalCount,
-    }
-  `,
-});
+Todo.propTypes = {
+  todo: PropTypes.object.isRequired,
+  viewer: PropTypes.object.isRequired,
+  relay: PropTypes.object.isRequired
+};
+
+Todo.defaultProps = {};
+
+export default Todo;

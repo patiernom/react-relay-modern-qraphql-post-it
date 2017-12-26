@@ -79,7 +79,7 @@ const fragment /*: ConcreteFragment*/ = {
                 },
                 {
                   "kind": "FragmentSpread",
-                  "name": "Todo_todo",
+                  "name": "TodoContainer_todo",
                   "args": null
                 },
                 {
@@ -139,7 +139,7 @@ const fragment /*: ConcreteFragment*/ = {
     },
     {
       "kind": "FragmentSpread",
-      "name": "Todo_viewer",
+      "name": "TodoContainer_viewer",
       "args": null
     }
   ],

@@ -1,6 +1,6 @@
 /**
  * @flow
- * @relayHash 6e68486c3be55f9a9276824ec269701b
+ * @relayHash 49cc9c9114c03c6a1bf11b24eef8a468
  */
 
 /* eslint-disable */
@@ -18,12 +18,12 @@ export type appQueryResponse = {|
 /*
 query appQuery {
   viewer {
-    ...TodoApp_viewer
+    ...TodoAppContainer_viewer
     id
   }
 }
 
-fragment TodoApp_viewer on User {
+fragment TodoAppContainer_viewer on User {
   id
   firstName
   lastName
@@ -41,7 +41,7 @@ fragment TodoList_viewer on User {
         __typename
         id
         timestamp
-        ...Todo_todo
+        ...TodoContainer_todo
       }
       cursor
     }
@@ -51,7 +51,7 @@ fragment TodoList_viewer on User {
     }
   }
   id
-  ...Todo_viewer
+  ...TodoContainer_viewer
 }
 
 fragment Footer_viewer on User {
@@ -60,13 +60,13 @@ fragment Footer_viewer on User {
   email
 }
 
-fragment Todo_todo on Todo {
+fragment TodoContainer_todo on Todo {
   timestamp
   id
   text
 }
 
-fragment Todo_viewer on User {
+fragment TodoContainer_viewer on User {
   id
   firstName
   lastName
@@ -91,7 +91,7 @@ const batch /*: ConcreteBatch*/ = {
         "selections": [
           {
             "kind": "FragmentSpread",
-            "name": "TodoApp_viewer",
+            "name": "TodoAppContainer_viewer",
             "args": null
           }
         ],
@@ -281,7 +281,7 @@ const batch /*: ConcreteBatch*/ = {
       }
     ]
   },
-  "text": "query appQuery {\n  viewer {\n    ...TodoApp_viewer\n    id\n  }\n}\n\nfragment TodoApp_viewer on User {\n  id\n  firstName\n  lastName\n  username\n  email\n  totalCount\n  ...TodoList_viewer\n  ...Footer_viewer\n}\n\nfragment TodoList_viewer on User {\n  todos(first: 2147483647) {\n    edges {\n      node {\n        __typename\n        id\n        timestamp\n        ...Todo_todo\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n    }\n  }\n  id\n  ...Todo_viewer\n}\n\nfragment Footer_viewer on User {\n  id\n  username\n  email\n}\n\nfragment Todo_todo on Todo {\n  timestamp\n  id\n  text\n}\n\nfragment Todo_viewer on User {\n  id\n  firstName\n  lastName\n  totalCount\n}\n"
+  "text": "query appQuery {\n  viewer {\n    ...TodoAppContainer_viewer\n    id\n  }\n}\n\nfragment TodoAppContainer_viewer on User {\n  id\n  firstName\n  lastName\n  username\n  email\n  totalCount\n  ...TodoList_viewer\n  ...Footer_viewer\n}\n\nfragment TodoList_viewer on User {\n  todos(first: 2147483647) {\n    edges {\n      node {\n        __typename\n        id\n        timestamp\n        ...TodoContainer_todo\n      }\n      cursor\n    }\n    pageInfo {\n      endCursor\n      hasNextPage\n    }\n  }\n  id\n  ...TodoContainer_viewer\n}\n\nfragment Footer_viewer on User {\n  id\n  username\n  email\n}\n\nfragment TodoContainer_todo on Todo {\n  timestamp\n  id\n  text\n}\n\nfragment TodoContainer_viewer on User {\n  id\n  firstName\n  lastName\n  totalCount\n}\n"
 };
 
 module.exports = batch;
