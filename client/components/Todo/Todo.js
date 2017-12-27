@@ -80,7 +80,7 @@ class Todo extends React.Component {
           </ListItemContent>
           <ListItemAction>
             <Tooltip label={'Edit'} position={'top'}>
-              <button className={'edit-todo'}  onClick={this.onClick}><Icon name='edit' /></button>
+              <button className={'edit-todo'} onClick={this.onClick}><Icon name='edit' /></button>
             </Tooltip>
           </ListItemAction>
           <ListItemAction>
