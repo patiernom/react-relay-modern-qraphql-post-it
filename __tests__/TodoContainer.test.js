@@ -16,8 +16,10 @@ const fixtures = {
     timestamp: Date.now()
   }
 };
-test('Relay testing wrap', () => {
-  const container = ReactTestUtils.renderIntoDocument(<Todo {...fixtures} />);
+describe('Testing Relay Container', () => {
+  it('check props of React Relay Container', () => {
+    const container = ReactTestUtils.renderIntoDocument(<Todo {...fixtures} />);
 
-  expect(container.props.todo.text).toBe(fixtures.todo.text);
+    expect(container.props.todo.text).toBe(fixtures.todo.text);
+  });
 });
